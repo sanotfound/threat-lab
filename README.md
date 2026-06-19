@@ -4,7 +4,7 @@
 
 ![Status](https://img.shields.io/badge/status-active%20development-blue)
 ![Methodology](https://img.shields.io/badge/methodology-MITRE%20ATT%26CK%20aligned-red)
-![Last Updated](https://img.shields.io/badge/last%20updated-2025-green)
+![Last Updated](https://img.shields.io/badge/last%20updated-2026-green)
 
 ---
 
