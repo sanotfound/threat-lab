@@ -1,0 +1,27 @@
+title: 
+id: 
+status: experimental
+description: |
+    Detects [behavior description].
+    Based on analysis of [malware/attack name].
+references:
+    - https://
+author: 
+date: YYYY-MM-DD
+tags:
+    - attack.tactic_name
+    - attack.tXXXX          # MITRE ATT&CK Technique ID
+logsource:
+    category:               # process_creation / network_connection / file_event / registry_event
+    product:                # windows / linux / macos
+detection:
+    selection:
+        # Define what to look for
+        EventID:
+        CommandLine|contains:
+    condition: selection
+falsepositives:
+    - 
+level: medium               # informational / low / medium / high / critical
+fields:
+    - 
