@@ -10,7 +10,7 @@ references:
     - https://www.secureworks.com/research/wcry-ransomware-analysis
     - https://attack.mitre.org/techniques/T1490/
 author: threat-lab
-date: 2025-01-01
+date: 2026-06-20
 tags:
     - attack.impact
     - attack.t1490           # Inhibit System Recovery
@@ -46,7 +46,7 @@ description: |
 references:
     - https://github.com/sanotfound/threat-lab/blob/main/analysis/malware/ransomware/wannacry.md
 author: threat-lab
-date: 2025-01-01
+date: 2026-06-20
 tags:
     - attack.persistence
     - attack.t1543.003       # Create or Modify System Process: Windows Service
