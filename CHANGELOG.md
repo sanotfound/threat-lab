@@ -4,7 +4,7 @@ All additions and updates to this repository are recorded here in reverse chrono
 
 ---
 
-## [v0.2] - 2025-01-01
+## [v0.2] - 2026-06-20
 
 ### Added
 - WannaCry ransomware analysis (`analysis/malware/ransomware/wannacry.md`)
