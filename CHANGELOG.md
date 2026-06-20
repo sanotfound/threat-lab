@@ -13,7 +13,7 @@ All additions and updates to this repository are recorded here in reverse chrono
 
 ---
 
-## [v0.1] - 2026-05-19
+## [v0.1] - 2026-06-19
 
 ### Added
 - Base repository structure
