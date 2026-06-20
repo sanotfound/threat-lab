@@ -18,7 +18,7 @@ This is a long-term project. It evolves as my technical knowledge deepens.
 
 ## What This Is Not
 
-**This is not** a list of threats. It is not a copy of MITRE ATT&CK.  
+**This is not** a list of threats. **It is not a copy** of MITRE ATT&CK.  
 Every analysis here involves source cross-referencing, explicit mapping to industry frameworks, and documented limitations.
 
 ---
