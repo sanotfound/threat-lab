@@ -2,7 +2,7 @@
     Rule Name   : WannaCry_Ransomware
     Description : Detects WannaCry ransomware based on strings, mutex, and file artifacts
     Author      : threat-lab
-    Date        : 2025-01-01
+    Date        : 2026-06-20
     Reference   : https://github.com/sanotfound/threat-lab/blob/main/analysis/malware/ransomware/wannacry.md
     Hash        : 24d004a104d4d54034dbcffc2a4b19a11f39008a575aa614ea04703480b1022c
     Status      : draft (based on published reports - not tested against live sample)
@@ -13,7 +13,7 @@ rule WannaCry_Ransomware_Strings
     meta:
         description = "Detects WannaCry ransomware based on distinctive strings found in published analysis"
         author      = "threat-lab"
-        date        = "2025-01-01"
+        date        = "2026-06-20"
         reference   = "https://www.secureworks.com/research/wcry-ransomware-analysis"
         hash        = "24d004a104d4d54034dbcffc2a4b19a11f39008a575aa614ea04703480b1022c"
 
@@ -54,7 +54,7 @@ rule WannaCry_Worm_Component
     meta:
         description = "Detects the WannaCry worm propagation component based on SMB scanning behavior indicators"
         author      = "threat-lab"
-        date        = "2025-01-01"
+        date        = "2026-06-20"
         reference   = "https://www.secureworks.com/research/wcry-ransomware-analysis"
 
     strings:
