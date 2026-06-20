@@ -6,7 +6,7 @@ description: |
     consistently observed in WannaCry infections and common across ransomware families.
     WannaCry executes this command to prevent file recovery via Windows backup mechanisms.
 references:
-    - https://github.com/your-handle/threat-lab/analysis/malware/ransomware/wannacry.md
+    - https://github.com/sanotfound/threat-lab/blob/main/analysis/malware/ransomware/wannacry.md
     - https://www.secureworks.com/research/wcry-ransomware-analysis
     - https://attack.mitre.org/techniques/T1490/
 author: threat-lab
@@ -44,7 +44,7 @@ description: |
     Detects creation of the Windows service mssecsvc2.0, which WannaCry installs
     as a persistence mechanism disguised as a Microsoft security service.
 references:
-    - https://github.com/your-handle/threat-lab/analysis/malware/ransomware/wannacry.md
+    - https://github.com/sanotfound/threat-lab/blob/main/analysis/malware/ransomware/wannacry.md
 author: threat-lab
 date: 2025-01-01
 tags:

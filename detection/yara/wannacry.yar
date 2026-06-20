@@ -3,7 +3,7 @@
     Description : Detects WannaCry ransomware based on strings, mutex, and file artifacts
     Author      : threat-lab
     Date        : 2025-01-01
-    Reference   : https://github.com/your-handle/threat-lab/analysis/malware/ransomware/wannacry.md
+    Reference   : https://github.com/sanotfound/threat-lab/blob/main/analysis/malware/ransomware/wannacry.md
     Hash        : 24d004a104d4d54034dbcffc2a4b19a11f39008a575aa614ea04703480b1022c
     Status      : draft (based on published reports - not tested against live sample)
 */
