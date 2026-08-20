@@ -2,6 +2,8 @@
 
 This document describes how analyses in this repository are conducted, what sources are used, and what the limitations of this approach are.
 
+This methodology applies to the OSINT-based analyses in `analysis/malware/`, `analysis/attacks/`, `analysis/campaigns/`, and `analysis/actors/`. Hands-on exercises in `analysis/labs/` follow a separate, primary-research methodology documented in [analysis/labs/README.md](analysis/labs/README.md).
+
 ---
 
 ## Analytical Approach
@@ -64,4 +66,5 @@ When sources disagree on attribution, infection vector, timeline, or behavior, t
 
 - Live malware analysis or reverse engineering (for now)
 - Real-time threat feeds
-- Penetration testing techniques or offensive tooling
+
+Hands-on offensive techniques are in scope, but only within the isolated lab covered by [analysis/labs/](analysis/labs/), never as part of the OSINT-based analyses this document describes.

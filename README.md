@@ -31,7 +31,8 @@ threat-lab/
 │   ├── malware/        # Malware family analysis (ransomware, trojans, worms, etc.)
 │   ├── attacks/        # Attack technique analysis (BGP hijacking, SQL injection, etc.)
 │   ├── campaigns/      # Threat campaign analysis
-│   └── actors/         # Threat actor profiling
+│   ├── actors/         # Threat actor profiling
+│   └── labs/           # Hands-on exercises in an isolated personal lab (Kali + Metasploitable2)
 ├── detection/
 │   ├── yara/           # YARA detection rules
 │   └── sigma/          # Sigma rules for SIEM
@@ -54,6 +55,14 @@ Key principles:
 - Source conflicts are documented explicitly
 - MITRE ATT&CK mapping is included in every analysis
 - Limitations are always stated
+
+---
+
+## Hands-On Labs
+
+Alongside the OSINT-based analyses, [analysis/labs/](analysis/labs/) documents hands-on exercises conducted in a private, isolated virtual lab (Kali Linux and Metasploitable2). These exercises take a purple team approach: each one pairs an offensive technique with an equal or greater focus on the detection and mitigation side, and every tool used is a legitimate, widely-taught IT/security tool applied only against systems I own and control.
+
+See [analysis/labs/README.md](analysis/labs/README.md) for scope, ground rules, and the exercise format.
 
 ---
 

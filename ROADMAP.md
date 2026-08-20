@@ -43,6 +43,24 @@ This document outlines the planned development of Threat Lab. Priorities shift a
 
 ---
 
+## Hands-On Labs
+
+Practical exercises conducted in an isolated Kali Linux and Metasploitable2 lab, documented in `analysis/labs/`. See [analysis/labs/README.md](analysis/labs/README.md) for scope and format.
+
+### Metasploitable2
+
+- [x] Reconnaissance and service enumeration (Nmap)
+- [x] TCP three-way handshake and Wireshark fundamentals
+- [x] vsftpd 2.3.4 backdoor exploitation (CVE-2011-2523)
+- [ ] Samba `usermap_script` RCE (CVE-2007-2447)
+- [ ] distccd unauthenticated RCE (CVE-2004-2687)
+- [ ] Weak/default credential attacks (MySQL, brute force with Hydra)
+- [ ] UnrealIRCd backdoor
+- [ ] ARP poisoning / MITM within the isolated network
+- [ ] Sigma rule authored from a lab exercise's log evidence
+
+---
+
 ## Planned Improvements
 
 - [ ] Add sandbox analysis to existing reports (as technical skills develop)

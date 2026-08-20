@@ -4,6 +4,22 @@ All additions and updates to this repository are recorded here in reverse chrono
 
 ---
 
+## [v0.3] - 2026-08-20
+
+### Added
+- Hands-on labs track (`analysis/labs/`): scope, ground rules, and exercise template
+- Metasploitable2 lab environment documentation (`analysis/labs/metasploitable2/00-environment.md`)
+- Lab exercise 01: reconnaissance and service enumeration with Nmap
+- Lab exercise 02: TCP three-way handshake and Wireshark fundamentals
+- Lab exercise 03: vsftpd 2.3.4 backdoor exploitation (CVE-2011-2523)
+
+### Updated
+- README.md: repository structure and a new Hands-On Labs section
+- METHODOLOGY.md: scoped the OSINT methodology to exclude `analysis/labs/`, which follows its own primary-research methodology
+- ROADMAP.md: added a Hands-On Labs section tracking lab progress
+
+---
+
 ## [v0.2] - 2026-06-20
 
 ### Added
