@@ -71,7 +71,7 @@ Four independent sources of evidence were reconstructed for this single event, c
 
 **Network capture (Wireshark, attacker side)**: independently corroborates the same connection on port 4444, and the HTTP-based payload transfer over port 8080 immediately before it.
 
-No Sigma or YARA rule has been written yet for this specific pattern. Candidate for a follow-up exercise once file-based and log-based rule writing is covered.
+A first Sigma rule was written from this evidence: [vsftpd-backdoor-connect-review.yml](../../../detection/sigma/vsftpd-backdoor-connect-review.yml). It flags `CONNECT` events in the vsftpd log for manual review, but by itself cannot confirm the missing login result, that requires a stateful correlation search, planned for a future SIEM setup rather than a single Sigma rule.
 
 ---
 

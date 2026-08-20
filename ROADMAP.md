@@ -57,7 +57,9 @@ Practical exercises conducted in an isolated Kali Linux and Metasploitable2 lab,
 - [ ] Weak/default credential attacks (MySQL, brute force with Hydra)
 - [ ] UnrealIRCd backdoor
 - [ ] ARP poisoning / MITM within the isolated network
-- [ ] Sigma rule authored from a lab exercise's log evidence
+- [x] Sigma rule authored from a lab exercise's log evidence
+- [ ] SIEM (Wazuh) deployed in the lab to observe attack and detection in real time from both sides
+- [ ] Correlation-based detection of the vsftpd connect-without-login pattern, implemented properly in the SIEM
 
 ---
 

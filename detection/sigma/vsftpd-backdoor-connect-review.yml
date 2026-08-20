@@ -1,0 +1,34 @@
+title: FTP Connection to Backdoored vsftpd Service (Requires Login Correlation)
+id: f47b6e21-8b3d-4c9a-9e12-6a7d8f0b1c34
+status: experimental
+description: |
+    Flags CONNECT events in vsftpd's application log for manual review.
+    During analysis of CVE-2011-2523 (the vsftpd 2.3.4 backdoor), connections
+    that triggered the backdoor logged a CONNECT event with no corresponding
+    OK LOGIN or FAIL LOGIN result, unlike legitimate sessions. This rule alone
+    only surfaces CONNECT events, it does not confirm the missing login result.
+    Full detection of this pattern requires a stateful correlation search
+    (planned for a SIEM such as Wazuh) checking for the absence of a login
+    result within a short time window after each CONNECT event.
+references:
+    - https://github.com/sanotfound/threat-lab/blob/main/analysis/labs/metasploitable2/03-vsftpd-backdoor.md
+    - https://nvd.nist.gov/vuln/detail/CVE-2011-2523
+author: S_Star
+date: 2026-08-20
+tags:
+    - attack.initial_access
+    - attack.t1190
+logsource:
+    product: linux
+    service: vsftpd
+detection:
+    selection:
+        Message|contains: 'CONNECT:'
+    condition: selection
+falsepositives:
+    - Every legitimate FTP connection also logs a CONNECT event; this rule alone does not distinguish benign from malicious traffic, it requires correlation with the absence of a following login result
+    - Health checks, monitoring probes, or port scanners connecting to port 21 without authenticating
+level: informational
+fields:
+    - Client
+    - Message
