@@ -26,6 +26,6 @@ Both VMs run on a VirtualBox host-only/internal network, isolated from any exter
 ## Setup Notes
 
 - Metasploitable2 has a large number of intentionally vulnerable services, several corresponding to real historical CVEs and, in a few cases, real supply-chain backdoor incidents (e.g., vsftpd 2.3.4, UnrealIRCd).
-- DNS resolution is not configured in the Kali VM (`/etc/resolv.conf` absent) — irrelevant for IP-based scanning against an internal target, but scans are run with `-n` to avoid reverse-DNS lookup attempts/warnings.
-- Static IPs on both VMs were originally assigned at runtime with `ifconfig` (e.g. `sudo ifconfig eth0 192.168.10.10 netmask 255.255.255.0`). This assignment does **not** persist across a VM reboot — after a restart, Kali fell back to DHCP (observed as `DHCP Discover` broadcasts in Wireshark) and lost connectivity to the target (`Network is unreachable`).
+- DNS resolution is not configured in the Kali VM (`/etc/resolv.conf` absent). This is irrelevant for IP-based scanning against an internal target, but scans are run with `-n` to avoid reverse-DNS lookup attempts/warnings.
+- Static IPs on both VMs were originally assigned at runtime with `ifconfig` (e.g. `sudo ifconfig eth0 192.168.10.10 netmask 255.255.255.0`). This assignment does **not** persist across a VM reboot. After a restart, Kali fell back to DHCP (observed as `DHCP Discover` broadcasts in Wireshark) and lost connectivity to the target (`Network is unreachable`).
   - **Fix in place:** both VMs are snapshotted in VirtualBox once the static IP is confirmed working. Each study session starts by restoring that snapshot, rather than re-running `ifconfig` manually.

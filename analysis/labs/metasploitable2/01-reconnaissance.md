@@ -19,11 +19,11 @@ Enumerate open ports and running service versions on the target to identify cand
 sudo nmap -sV -sC -p- -T4 -n 192.168.10.20 -oN metasploitable2_scan.txt
 ```
 
-- `-sV` — service/version detection
-- `-sC` — default NSE scripts (banners, basic enumeration)
-- `-p-` — tells Nmap to scan all 65,535 TCP ports on the target machine. By default, Nmap only scans the 1,000 most common ports. Using -p- ensures that no hidden or non-standard services running on higher-numbered ports are missed during the reconnaissance phase.
-- `-T4` — faster timing, appropriate for a local lab network
-- `-n` — skip DNS resolution (no resolver configured in the attacker VM)
+- `-sV`: service/version detection
+- `-sC`: default NSE scripts (banners, basic enumeration)
+- `-p-`: tells Nmap to scan all 65,535 TCP ports on the target machine. By default, Nmap only scans the 1,000 most common ports. Using -p- ensures that no hidden or non-standard services running on higher-numbered ports are missed during the reconnaissance phase.
+- `-T4`: faster timing, appropriate for a local lab network
+- `-n`: skip DNS resolution (no resolver configured in the attacker VM)
 
 Scan duration: 164.37 seconds. 
 
@@ -38,7 +38,7 @@ Scan duration: 164.37 seconds.
 
 ---
 
-## Few exemples of the results
+## A Few Examples of the Results
 
 ```
 
@@ -77,7 +77,7 @@ Additional notes from script output:
 - SMTP (25): supports `VRFY` (username enumeration)
 - rpcinfo revealed NFS/mountd/nlockmgr RPC services
 
-Full raw output saved locally as `metasploitable2_scan.txt` on the Kali VM (not committed to this repo — see [Evidence](#evidence)).
+Full raw output saved locally as `metasploitable2_scan.txt` on the Kali VM (not committed to this repo, see [Evidence](#evidence)).
 
 ---
 
@@ -85,17 +85,17 @@ Full raw output saved locally as `metasploitable2_scan.txt` on the Kali VM (not 
 
 Findings prioritized by exploitability, grouped for planning follow-up exercises:
 
-### High priority — known backdoors / unauthenticated RCE
+### High priority: known backdoors / unauthenticated RCE
 
 | Port | Service | Why it matters |
 |---|---|---|
-| 21 | vsftpd 2.3.4 | Backdoored source distribution, 2011 (CVE-2011-2523) — supply-chain compromise |
+| 21 | vsftpd 2.3.4 | Backdoored source distribution, 2011 (CVE-2011-2523), supply-chain compromise |
 | 1524 | bindshell | A root shell is already listening, no exploitation needed |
 | 6667/6697 | UnrealIRCd | Backdoored source distribution, 2009–2010 |
 | 3632 | distccd | Unauthenticated RCE (CVE-2004-2687) |
 | 8787 | Ruby DRb | Unauthenticated remote code execution via DRb protocol |
 
-### Medium priority — weak/default authentication or known CVEs
+### Medium priority: weak/default authentication or known CVEs
 
 | Port | Service | Why it matters |
 |---|---|---|
@@ -105,9 +105,9 @@ Findings prioritized by exploitability, grouped for planning follow-up exercises
 | 5900 | VNC | Weak authentication |
 | 8180 | Tomcat | Commonly default manager credentials |
 
-### Low priority — information disclosure / enumeration only
+### Low priority: information disclosure / enumeration only
 
-Ports 111 (rpcbind), 2049 (NFS), 25 (SMTP VRFY) — no direct exploitation path identified yet, but useful for building a fuller picture of the target (users, exported shares, RPC services).
+Ports 111 (rpcbind), 2049 (NFS), 25 (SMTP VRFY): no direct exploitation path identified yet, but useful for building a fuller picture of the target (users, exported shares, RPC services).
 
 ---
 
@@ -117,14 +117,14 @@ This scan itself is a detectable event: a single source IP generating connection
 - IDS/IPS alerts (e.g., Snort/Suricata port-scan preprocessors)
 - Firewall/flow-log anomalies (high number of distinct destination ports from one source in a short window)
 
-No Sigma/YARA rule written yet for this — candidate for a follow-up exercise once I cover network-based detection.
+No Sigma/YARA rule written yet for this. Candidate for a follow-up exercise once I cover network-based detection.
 
 ---
 
 ## Mitigation and Prevention
 
 - Disable/uninstall unused services (most of the above should never be exposed on a production host)
-- Network segmentation — none of these services should be reachable from an untrusted network
+- Network segmentation: none of these services should be reachable from an untrusted network
 - Rate-limiting/alerting on port-scan behavior at the firewall or IDS level
 - Regular vulnerability scanning from the defender's side, to catch this exposure before an attacker does
 
@@ -140,5 +140,5 @@ No Sigma/YARA rule written yet for this — candidate for a follow-up exercise o
 
 ## Notes / Open Questions
 
-- First scan attempt was interrupted (`Ctrl+C`) at 96.67% completion after pressing a key to check progress — not an Nmap failure, just an accidental interrupt. Re-run completed cleanly.
-- Next exercise: exploitation of vsftpd 2.3.4 backdoor (port 21) — see `02-vsftpd-backdoor.md`.
+- First scan attempt was interrupted (`Ctrl+C`) at 96.67% completion after pressing a key to check progress. Not an Nmap failure, just an accidental interrupt. Re-run completed cleanly, this time scanning the full port range without interruption.
+- Next exercise: exploitation of vsftpd 2.3.4 backdoor (port 21). See `03-vsftpd-backdoor.md`.

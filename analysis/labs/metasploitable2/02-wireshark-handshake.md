@@ -33,20 +33,20 @@ Captured sequence (frames 21-25), after filtering:
 |---|---|---|---|
 | 21 | 192.168.10.10 → 192.168.10.20 | `[SYN]` Seq=0 | Kali requests connection to port 21 |
 | 22 | 192.168.10.20 → 192.168.10.10 | `[SYN, ACK]` Seq=0 | Metasploitable2 acknowledges and synchronizes back |
-| 23 | 192.168.10.10 → 192.168.10.20 | `[ACK]` Seq=1 Ack=1 | Kali confirms — connection established |
+| 23 | 192.168.10.10 → 192.168.10.20 | `[ACK]` Seq=1 Ack=1 | Kali confirms: connection established |
 | 24 | 192.168.10.20 → 192.168.10.10 | FTP `Response: 220 (vsFTPd 2.3.4...)` | First application-layer data: the server's banner |
 | 25 | 192.168.10.10 → 192.168.10.20 | `[ACK]` | Kali acknowledges receipt of the banner |
 
 Frames 21-23 are the three-way handshake itself. Frame 24 is the first application data exchanged, only possible once the handshake completes.
 
-Also observed prior to filtering: unrelated background noise (DHCP Discover from Kali, ICMPv6 Multicast Listener Report/Neighbor Solicitation/Router Solicitation) and, from the target, NBNS/BROWSER broadcast traffic (Samba announcing itself on the network) — normal OS/service chatter, unrelated to this exercise.
+Also observed prior to filtering: unrelated background noise (DHCP Discover from Kali, ICMPv6 Multicast Listener Report/Neighbor Solicitation/Router Solicitation) and, from the target, NBNS/BROWSER broadcast traffic (Samba announcing itself on the network). This is normal OS/service chatter, unrelated to this exercise.
 
 ---
 
 ## Concepts Reinforced
 
 - **Ephemeral vs. well-known ports**: Kali's side of the connection used port `57890` (OS-assigned, temporary), while Metasploitable2 used the fixed, well-known port `21` for FTP. Servers need a fixed port so clients know where to connect; clients only need any free local port for their side.
-- **Banner grabbing, manually observed**: The `220 (vsFTPd 2.3.4)` banner in frame 24 is the exact same information Nmap's `-sV` reported automatically in Exercise 01 — this confirms, at the packet level, how service/version detection actually works: the service announces itself unprompted upon connection.
+- **Banner grabbing, manually observed**: The `220 (vsFTPd 2.3.4)` banner in frame 24 is the exact same information Nmap's `-sV` reported automatically in Exercise 01. This confirms, at the packet level, how service/version detection actually works: the service announces itself unprompted upon connection.
 
 ---
 
@@ -56,19 +56,19 @@ Also observed prior to filtering: unrelated background noise (DHCP Discover from
 |---|---|---|
 | Reconnaissance (referential only) | Network Sniffing | T1040 |
 
-Note: this exercise is a foundational networking/tooling exercise, not an attack in itself — the mapping is included for reference/consistency with the repository's format, not because malicious sniffing was performed.
+Note: this exercise is a foundational networking/tooling exercise, not an attack in itself. The mapping is included for reference/consistency with the repository's format, not because malicious sniffing was performed.
 
 ---
 
 ## Impact Observed
 
-None — purely observational. No exploitation was performed against the target.
+None. Purely observational, no exploitation was performed against the target.
 
 ---
 
 ## Detection
 
-An unencrypted FTP banner grab is trivially visible to any packet capture or FTP-aware IDS signature. From a defensive standpoint, the interesting fact here is that this exact information (server software + exact version) is available to *anyone* who can reach port 21, with zero authentication — which is precisely what makes accurate service versioning dangerous when it maps to a known vulnerability (see Exercise 01 triage, and the planned vsftpd exercise).
+An unencrypted FTP banner grab is trivially visible to any packet capture or FTP-aware IDS signature. From a defensive standpoint, the interesting fact here is that this exact information (server software + exact version) is available to *anyone* who can reach port 21, with zero authentication. This is precisely what makes accurate service versioning dangerous when it maps to a known vulnerability (see Exercise 01 triage, and the planned vsftpd exercise).
 
 ---
 
@@ -82,8 +82,9 @@ An unencrypted FTP banner grab is trivially visible to any packet capture or FTP
 
 ## Evidence
 
-- `assets/02-wireshark-filtered-handshake.png` — filtered packet list showing frames 21-25
-- `assets/02-wireshark-syn-flag-detail.png` — frame 21 expanded, showing the raw TCP Flags byte (`0x002`) decoded bit-by-bit with `Syn: Set`, alongside the terminal output confirming the FTP banner (`220 (vsFTPd 2.3.4)`) — ties the packet-level SYN flag to the completed connection at the application level
+- `assets/02-wireshark-filtered-handshake.png`: filtered packet list showing frames 21-25
+- `assets/02-wireshark-syn-flag-detail.png`: frame 21 expanded, showing the raw TCP Flags byte (`0x002`) decoded bit-by-bit with `Syn: Set`, alongside the terminal output confirming the FTP banner (`220 (vsFTPd 2.3.4)`). Ties the packet-level SYN flag to the completed connection at the application level.
+
 ---
 
 ## Notes / Open Questions

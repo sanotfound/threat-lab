@@ -40,7 +40,7 @@ Step-by-step account of what was actually run, in order. Include exact commands 
 
 ## Impact Observed
 
-What was concretely achieved (e.g., shell access, data read, privilege level). Evidence-based only — no speculation about impact beyond what was directly observed.
+What was concretely achieved (e.g., shell access, data read, privilege level). Evidence-based only, no speculation about impact beyond what was directly observed.
 
 ---
 
