@@ -81,12 +81,15 @@ An unencrypted FTP banner grab is trivially visible to any packet capture or FTP
 ---
 
 ## Evidence
+![WiresharkEvidence_1](assets/02-wireshark-filtered-handshake.png)
+*  filtered packet list showing frames 21-25
 
-- `assets/02-wireshark-filtered-handshake.png` — filtered packet list showing frames 21-25
-- `assets/02-wireshark-syn-flag-detail.png` — frame 21 expanded, showing the raw TCP Flags byte (`0x002`) decoded bit-by-bit with `Syn: Set`, alongside the terminal output confirming the FTP banner (`220 (vsFTPd 2.3.4)`) — ties the packet-level SYN flag to the completed connection at the application level
+![WiresharkEvidence_1](assets/02-wireshark-syn-flag-detail.png) 
+
+*frame 21 expanded, showing the raw TCP Flags byte (`0x002`) decoded bit-by-bit with `Syn: Set`, alongside the terminal output confirming the FTP banner (`220 (vsFTPd 2.3.4)`) ties the packet-level SYN flag to the completed connection at the application level*
+
 ---
 
 ## Notes / Open Questions
-
 - Session connectivity issue: after a VM reboot, the manually-assigned static IP on Kali (set via `ifconfig`, non-persistent) was lost, causing `Network is unreachable` when attempting to connect to the target. Resolved by restoring a VirtualBox snapshot taken with the static IP already configured. See `00-environment.md` for the standing fix.
 - Next exercise: vsftpd 2.3.4 backdoor exploitation (`03-vsftpd-backdoor.md`), targeting the exact service/version identified in this and the previous exercise.
