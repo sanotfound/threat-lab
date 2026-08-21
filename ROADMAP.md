@@ -58,8 +58,8 @@ Practical exercises conducted in an isolated Kali Linux and Metasploitable2 lab,
 - [ ] UnrealIRCd backdoor
 - [ ] ARP poisoning / MITM within the isolated network
 - [x] Sigma rule authored from a lab exercise's log evidence
-- [ ] SIEM (Wazuh) deployed in the lab to observe attack and detection in real time from both sides
-- [ ] Correlation-based detection of the vsftpd connect-without-login pattern, implemented properly in the SIEM
+- [x] SIEM (Wazuh) deployment attempted, deferred due to a host hardware constraint. See [wazuh-siem-attempt.md](analysis/labs/wazuh-siem-attempt.md)
+- [ ] Correlation-based detection of the vsftpd connect-without-login pattern (contingent on revisiting the SIEM attempt above)
 
 ---
 

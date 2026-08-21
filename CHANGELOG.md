@@ -4,6 +4,16 @@ All additions and updates to this repository are recorded here in reverse chrono
 
 ---
 
+## [v0.4] - 2026-08-21
+
+### Added
+- `analysis/labs/wazuh-siem-attempt.md`: documents a Wazuh SIEM deployment attempt, the working remote syslog configuration achieved, and the host hardware constraint (8GB RAM) that led to deferring it
+
+### Updated
+- ROADMAP.md: Hands-On Labs section reflects the Sigma rule and the deferred SIEM attempt
+
+---
+
 ## [v0.3] - 2026-08-20
 
 ### Added
@@ -12,6 +22,7 @@ All additions and updates to this repository are recorded here in reverse chrono
 - Lab exercise 01: reconnaissance and service enumeration with Nmap
 - Lab exercise 02: TCP three-way handshake and Wireshark fundamentals
 - Lab exercise 03: vsftpd 2.3.4 backdoor exploitation (CVE-2011-2523)
+- First Sigma rule for the lab track, written from exercise 03's log evidence: `detection/sigma/vsftpd-backdoor-connect-review.yml`
 
 ### Updated
 - README.md: repository structure and a new Hands-On Labs section
