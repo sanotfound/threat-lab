@@ -33,14 +33,13 @@ Each target environment gets its own folder (e.g., `metasploitable2/`). Inside:
 
 ## Exercise Format
 
-Each exercise follows the same structure (see [TEMPLATE.md](TEMPLATE.md)):
+Starting with the exercises that follow the vsftpd backdoor (03), each new exercise is split into two parts (see [TEMPLATE.md](TEMPLATE.md)):
 
-1. **Reconnaissance**: what was discovered and how
-2. **Execution**: how the attack/technique was carried out, step by step
-3. **MITRE ATT&CK Mapping**: tactic, technique, ID
-4. **Impact Observed**: what was actually achieved, with evidence
-5. **Detection**: what artifacts this leaves and how to catch it (Sigma/YARA where applicable)
-6. **Mitigation and Prevention**: how this is prevented or hardened against
+**Part 1: Attack.** Technical mechanics, executed with full knowledge of what is being done: reconnaissance, execution steps, MITRE ATT&CK mapping, impact observed.
+
+**Part 2: Defense (Threat Hunting).** The same incident investigated from the defender's side, structured as a real triage would be. A narrative trigger (a report, an observation) stands in for the SIEM/IDS alert this lab does not have, and every conclusion in this section is argued from evidence found during the investigation, not from what Part 1 already revealed. This section closes with detection artifacts and mitigation/prevention, same as before.
+
+Earlier exercises (01, 02) predate this format and remain single-flow.
 
 ---
 
