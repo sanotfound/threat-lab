@@ -52,7 +52,7 @@ Practical exercises conducted in an isolated Kali Linux and Metasploitable2 lab,
 - [x] Reconnaissance and service enumeration (Nmap)
 - [x] TCP three-way handshake and Wireshark fundamentals
 - [x] vsftpd 2.3.4 backdoor exploitation (CVE-2011-2523)
-- [ ] Samba `usermap_script` RCE (CVE-2007-2447)
+- [x] Samba `usermap_script` RCE (CVE-2007-2447)
 - [ ] distccd unauthenticated RCE (CVE-2004-2687)
 - [ ] Weak/default credential attacks (MySQL, brute force with Hydra)
 - [ ] UnrealIRCd backdoor

@@ -4,6 +4,18 @@ All additions and updates to this repository are recorded here in reverse chrono
 
 ---
 
+## [v0.5] - 2026-08-22
+
+### Added
+- Lab exercise 04: Samba `usermap_script` command execution (CVE-2007-2447), the first exercise fully documented in the new Attack/Defense two-part format
+- Attack chapters now structured around the Cyber Kill Chain; Defense chapters around the NIST incident response lifecycle, with findings answering the 5 W's, plus new Containment and Recovery sections
+
+### Updated
+- TEMPLATE.md and labs/README.md: formalize the Kill Chain and NIST-based structure, and the convention of embedding evidence inline in the text rather than in a separate section
+- ROADMAP.md: Samba exercise marked complete
+
+---
+
 ## [v0.4] - 2026-08-21
 
 ### Added

@@ -35,11 +35,13 @@ Each target environment gets its own folder (e.g., `metasploitable2/`). Inside:
 
 Starting with the exercises that follow the vsftpd backdoor (03), each new exercise is split into two parts (see [TEMPLATE.md](TEMPLATE.md)):
 
-**Part 1: Attack.** Technical mechanics, executed with full knowledge of what is being done: reconnaissance, execution steps, MITRE ATT&CK mapping, impact observed.
+**Part 1: Attack.** Technical mechanics, executed with full knowledge of what is being done, structured around the Cyber Kill Chain (reconnaissance, weaponization, delivery, exploitation, installation, command and control, actions on objectives), plus MITRE ATT&CK mapping and impact observed.
 
-**Part 2: Defense (Threat Hunting).** The same incident investigated from the defender's side, structured as a real triage would be. A narrative trigger (a report, an observation) stands in for the SIEM/IDS alert this lab does not have, and every conclusion in this section is argued from evidence found during the investigation, not from what Part 1 already revealed. This section closes with detection artifacts and mitigation/prevention, same as before.
+**Part 2: Defense (Threat Hunting).** The same incident investigated from the defender's side, structured as a real triage would be, following the shape of the NIST incident response lifecycle. A narrative trigger (a report, an observation) stands in for the SIEM/IDS alert this lab does not have, and every conclusion is argued from evidence found during the investigation, not from what Part 1 already revealed. Findings answer the 5 W's (who, what, where, why, when) directly. This section closes with containment, recovery, detection artifacts, and mitigation/prevention.
 
 Earlier exercises (01, 02) predate this format and remain single-flow.
+
+Evidence screenshots are embedded inline, at the point in the text they support, rather than collected in a separate section at the end. Exercises 01 through 03 predate this convention and still use a standalone Evidence section.
 
 ---
 

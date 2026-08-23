@@ -9,7 +9,7 @@
 
 ## Part 1: Attack
 
-Technical mechanics of the attack itself, executed with full knowledge of what is being done and why.
+Technical mechanics of the attack itself, executed with full knowledge of what is being done and why, structured around the Cyber Kill Chain (see [frameworks/cyber-kill-chain.md](../../frameworks/cyber-kill-chain.md)). Embed evidence screenshots inline, right at the step or claim they support, rather than collecting them in a separate section at the end.
 
 ### Objective
 
@@ -19,14 +19,29 @@ What this part sets out to demonstrate or learn about the attack.
 
 What was discovered prior to this exercise, and how (tool, command, output). Reference the environment's recon file if applicable.
 
-### Execution
+### Weaponization
 
-Step-by-step account of what was actually run, in order. Include exact commands and relevant output.
+How the specific exploit/tool was selected and prepared, and why, based on what reconnaissance revealed.
 
-| Step | Command / Action | Result |
-|---|---|---|
-| 1 | | |
-| 2 | | |
+### Delivery
+
+How the exploit was sent to the target.
+
+### Exploitation
+
+The moment the vulnerability was actually triggered, and what happened as a direct result.
+
+### Installation
+
+Any persistence established (backdoor accounts, scheduled tasks, added keys), if applicable to this exercise.
+
+### Command and Control
+
+The channel used to communicate with or control the compromised system going forward, if applicable.
+
+### Actions on Objectives
+
+What the attacker ultimately achieved or demonstrated.
 
 ### MITRE ATT&CK Mapping
 
@@ -42,7 +57,7 @@ What was concretely achieved (e.g., shell access, data read, privilege level). E
 
 ## Part 2: Defense (Threat Hunting)
 
-Investigation conducted from the defender's side, on the same incident, structured as a real triage would be: something prompted a look, and every conclusion is argued from evidence found during this investigation, not from what was already known from Part 1.
+Investigation conducted from the defender's side, on the same incident, structured as a real triage would be: something prompted a look, and every conclusion is argued from evidence found during this investigation, not from what was already known from Part 1. Follows the general shape of the NIST incident response lifecycle. Embed evidence screenshots inline, right where they support the point being made, not collected separately.
 
 ### Trigger
 
@@ -54,7 +69,23 @@ Step-by-step account of what was checked, in what order, and why. Each step shou
 
 ### Findings
 
-What the evidence concretely showed, and the conclusion drawn from it: attack type confirmed, and how confident that conclusion is given what was actually found.
+What the evidence concretely showed, and the conclusion drawn from it, answering the 5 W's directly:
+
+- **Who**: source of the activity (IP, account involved)
+- **What**: the type of attack and actions taken
+- **Where**: which service, host, or system was affected
+- **Why**: the vulnerability or misconfiguration that made this possible
+- **When**: timeline reconstructed from evidence
+
+State how confident each conclusion is given what was actually found.
+
+### Containment
+
+How the incident would be (or was) contained: what would be disabled, isolated, or blocked to stop it from continuing or spreading. Name the naive first response most people reach for (e.g., blocking a single IP) and explain concretely why it is temporary or insufficient, before presenting the measure that actually closes the exploitation path rather than reacting to one instance of it.
+
+### Recovery
+
+What would be done to reverse the damage and restore a trustworthy state: accounts to remove, systems to patch or rebuild, credentials to rotate.
 
 ### Detection
 
@@ -62,13 +93,7 @@ What log, network, or host artifact this activity generates in general. Link to 
 
 ### Mitigation and Prevention
 
-What configuration, patch, or control would have prevented or limited this.
-
----
-
-## Evidence
-
-Screenshots/output stored in `assets/`, referenced here.
+What configuration, patch, or control would have prevented or limited this, directly answering what could have been different.
 
 ---
 
