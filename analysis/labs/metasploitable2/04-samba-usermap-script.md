@@ -232,17 +232,17 @@ The four vertices connect in the simplest possible shape for this incident: one 
 
 ### Pyramid of Pain
 
-Ranking what this investigation actually recovered, from easiest for an attacker to change to hardest:
+Ranking what this investigation actually recovered, from the top of the pyramid (hardest for an attacker to change) down to the base (easiest):
 
 | Indicator | Example from this incident | Cost to the attacker of losing it |
 |---|---|---|
-| Hash values | The `backdoor` account's password hash | Trivial, a new password costs nothing to set |
-| IP addresses | 192.168.10.10 | Trivial, already covered in Containment, a new address defeats this instantly |
-| Host artifacts | The `backdoor` account name, the `/tmp/ltfb` named pipe | Cheap, renaming things costs the attacker almost nothing |
-| Tools | The Metasploit module and its `reverse_netcat` payload | Moderate, a different exploit framework or a hand-written payload still achieves the same result |
 | TTPs | Injecting shell metacharacters into an authentication field that gets passed unsanitized to an external script | High, this is the actual technique, and it is not specific to Samba, it applies to any interface that passes unsanitized input to a shell |
+| Tools | The Metasploit module and its `reverse_netcat` payload | Moderate, a different exploit framework or a hand-written payload still achieves the same result |
+| Host artifacts | The `backdoor` account name, the `/tmp/ltfb` named pipe | Cheap, renaming things costs the attacker almost nothing |
+| IP addresses | 192.168.10.10 | Trivial, already covered in Containment, a new address defeats this instantly |
+| Hash values | The `backdoor` account's password hash | Trivial, a new password costs nothing to set |
 
-This is why the Containment section above rejects IP blocking and the Mitigation section leads with disabling or sanitizing the vulnerable script rather than just removing the backdoor account: both choices deliberately target higher up this pyramid, where denial actually costs the attacker something, instead of the bottom, where it costs them nothing.
+This is why the Containment section above rejects IP blocking and the Mitigation section leads with disabling or sanitizing the vulnerable script rather than just removing the backdoor account: both choices deliberately target the top of this pyramid, where denial actually costs the attacker something, instead of the base, where it costs them nothing.
 
 ---
 
