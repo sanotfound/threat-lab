@@ -217,6 +217,35 @@ No Sigma rule has been written yet for this specific pattern. Two strong candida
 
 ---
 
+## Conclusion
+
+### Diamond Model
+
+| Vertex | This incident |
+|---|---|
+| Adversary | The operator at 192.168.10.10 |
+| Capability | Command injection via Samba's `username map script` (CVE-2007-2447), delivered through Metasploit, followed by local account creation for persistence |
+| Infrastructure | The Kali host itself, doubling as both the exploit delivery point and the reverse shell listener on port 4444 |
+| Victim | Metasploitable2's Samba service (192.168.10.20:139) |
+
+The four vertices connect in the simplest possible shape for this incident: one adversary, one piece of infrastructure, one capability, one victim. Nothing here involves a broader campaign, shared infrastructure, or multiple stages of adversary tooling, which is itself worth stating plainly rather than implying a complexity that was not present.
+
+### Pyramid of Pain
+
+Ranking what this investigation actually recovered, from easiest for an attacker to change to hardest:
+
+| Indicator | Example from this incident | Cost to the attacker of losing it |
+|---|---|---|
+| Hash values | The `backdoor` account's password hash | Trivial, a new password costs nothing to set |
+| IP addresses | 192.168.10.10 | Trivial, already covered in Containment, a new address defeats this instantly |
+| Host artifacts | The `backdoor` account name, the `/tmp/ltfb` named pipe | Cheap, renaming things costs the attacker almost nothing |
+| Tools | The Metasploit module and its `reverse_netcat` payload | Moderate, a different exploit framework or a hand-written payload still achieves the same result |
+| TTPs | Injecting shell metacharacters into an authentication field that gets passed unsanitized to an external script | High, this is the actual technique, and it is not specific to Samba, it applies to any interface that passes unsanitized input to a shell |
+
+This is why the Containment section above rejects IP blocking and the Mitigation section leads with disabling or sanitizing the vulnerable script rather than just removing the backdoor account: both choices deliberately target higher up this pyramid, where denial actually costs the attacker something, instead of the bottom, where it costs them nothing.
+
+---
+
 ## Notes / Open Questions
 
 - The false lead in `auth.log` (mistaking this investigation's own `sudo cat` command for suspicious activity) is kept in the writeup deliberately, it is a realistic and common investigative mistake, not just a data point in favor of the "real" finding.

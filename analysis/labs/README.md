@@ -37,7 +37,9 @@ Starting with the exercises that follow the vsftpd backdoor (03), each new exerc
 
 **Part 1: Attack.** Technical mechanics, executed with full knowledge of what is being done, structured around the Cyber Kill Chain (reconnaissance, weaponization, delivery, exploitation, installation, command and control, actions on objectives), plus MITRE ATT&CK mapping and impact observed.
 
-**Part 2: Defense (Threat Hunting).** The same incident investigated from the defender's side, structured as a real triage would be, following the shape of the NIST incident response lifecycle. A narrative trigger (a report, an observation) stands in for the SIEM/IDS alert this lab does not have, and every conclusion is argued from evidence found during the investigation, not from what Part 1 already revealed. Findings answer the 5 W's (who, what, where, why, when) directly. This section closes with containment, recovery, detection artifacts, and mitigation/prevention.
+**Part 2: Defense (Threat Hunting).** The same incident investigated from the defender's side, structured as a real triage would be, following the shape of the NIST incident response lifecycle. A narrative trigger (a report, an observation) stands in for the SIEM/IDS alert this lab does not have, and every conclusion is argued from evidence found during the investigation, not from what Part 1 already revealed. Findings answer the 5 W's (who, what, where, why, when) directly. Containment sections name the naive first response (e.g., blocking a single IP) and explain why it falls short before presenting what actually closes the exploitation path. This section closes with recovery, detection artifacts, and mitigation/prevention.
+
+**Conclusion.** Synthesizes both parts using whichever of this repo's frameworks were not already applied above, typically the Diamond Model and the Pyramid of Pain, without repeating findings already stated.
 
 Earlier exercises (01, 02) predate this format and remain single-flow.
 

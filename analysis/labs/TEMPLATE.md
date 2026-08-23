@@ -97,6 +97,20 @@ What configuration, patch, or control would have prevented or limited this, dire
 
 ---
 
+## Conclusion
+
+Synthesizes both parts using frameworks not already applied above (MITRE ATT&CK and the Cyber Kill Chain are used in Part 1, the NIST-style lifecycle in Part 2). Do not repeat findings already stated, reframe the incident through a different analytical lens instead.
+
+### Diamond Model
+
+Adversary, capability, infrastructure, and victim for this incident (see [frameworks/diamond-model.md](../../frameworks/diamond-model.md)), and the relationships between them.
+
+### Pyramid of Pain
+
+Rank the indicators uncovered during the investigation (hashes, IPs, domains, host/network artifacts, tools, TTPs, see [frameworks/pyramid-of-pain.md](../../frameworks/pyramid-of-pain.md)) by how much difficulty or cost denying each one actually imposes on the attacker. Connect this back to why some of the containment or mitigation choices above are durable and others are not.
+
+---
+
 ## Notes / Open Questions
 
 Anything unclear, or follow-up worth exploring in a later exercise.
