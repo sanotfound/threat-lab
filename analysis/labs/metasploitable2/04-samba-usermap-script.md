@@ -49,6 +49,8 @@ Running `exploit` triggered the vulnerability and opened a command shell session
 [*] Command shell session 1 opened (192.168.10.10:4444 -> 192.168.10.20:57834) at 2026-08-22 15:36:37 -0400
 ```
 
+The mechanism behind that single command is worth spelling out, since it explains why this works with no valid credentials at all. Samba's `username map script` option runs an external script to translate a client-supplied username into a Unix account, and it does this as part of resolving *who to check credentials against*, before authentication succeeds or fails. The client-supplied username is passed into that script invocation without sanitization. Metasploit's module abuses this by sending a username containing shell metacharacters (backticks, in this case), so instead of being treated as an inert string, part of the "username" is executed as a shell command by the script's own `/bin/sh -c` invocation. The module's own `info` output already states this plainly: authentication is not needed, because the script runs during username mapping, a step that happens prior to authentication.
+
 The resulting shell is unstructured (no terminal emulation), arrow keys and other control sequences are sent as literal text and produce `command not found` errors rather than doing anything useful. Plain commands work normally.
 
 ### Installation
@@ -205,6 +207,12 @@ No Sigma rule has been written yet for this specific pattern. Two strong candida
 
 - A `useradd` event creating an account outside of expected administrative activity or naming convention
 - A process tree originating from `smbd`, spawning `sh -c` with a Samba script path, in turn spawning `nc` to an external address
+
+Everything above is host-based evidence, and it is worth being explicit about what that means: it was only recoverable because the attacker did not bother to clean up after themselves. A more careful intrusion could delete or edit `auth.log`, avoid dropping files with recognizable names, or use fileless techniques that never touch disk in a way `ps aux` or `/etc/passwd` would show. None of the evidence in this exercise would survive that.
+
+The layer this exercise did not have is network-based detection ahead of the compromise: a packet capture or an SMB-aware IDS/IPS on the wire could have flagged the malicious username inside the SMB Session Setup request itself, before the script ever ran. That is a genuinely earlier detection point than anything host-based can offer, since it does not depend on the attacker's actions on the host at all. This exercise did not capture that traffic, and it is worth naming as a real gap rather than skipping it, not because the tooling did not exist, but because continuous full packet capture on every service is expensive and was not part of this lab's setup.
+
+The deeper answer to "what if the attacker tampers with the host evidence" is not a better host-based tool, it is not trusting the host at all: shipping logs to a separate system in real time, so a compromise after the fact cannot retroactively erase what was already recorded elsewhere. This lab already attempted exactly that, a Wazuh SIEM receiving Metasploitable2's logs over syslog, and got the pipeline working end to end before deferring the project over a host hardware constraint, not a design flaw. See [wazuh-siem-attempt.md](../wazuh-siem-attempt.md) for the full account. Revisiting that attempt, rather than adding more host-based tooling, is the real next step for closing this gap.
 
 ### Mitigation and Prevention
 
