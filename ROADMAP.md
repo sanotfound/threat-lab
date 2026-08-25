@@ -6,8 +6,8 @@ This document outlines the planned development of Threat Lab. Priorities shift a
 
 ## Current Focus
 
-- Establishing base structure and documentation standards
-- Writing the first complete malware analysis
+- Base structure and documentation standards established
+- First complete malware analysis (WannaCry) and first complete hands-on lab arc (Metasploitable2, exercises 01-05) done
 - Building YARA rule templates aligned with analyses
 
 ---
@@ -16,7 +16,7 @@ This document outlines the planned development of Threat Lab. Priorities shift a
 
 ### Malware
 
-- [ ] WannaCry (Ransomware)
+- [x] WannaCry (Ransomware)
 - [ ] NotPetya (Wiper/Ransomware)
 - [ ] Emotet (Trojan/Loader)
 - [ ] Stuxnet (Worm)
@@ -56,7 +56,7 @@ Practical exercises conducted in an isolated Kali Linux and Metasploitable2 lab,
 - [ ] distccd unauthenticated RCE (CVE-2004-2687)
 - [ ] Weak/default credential attacks (MySQL, brute force with Hydra)
 - [ ] UnrealIRCd backdoor
-- [ ] ARP poisoning / MITM within the isolated network
+- [x] ARP poisoning / MITM within the isolated network
 - [x] Sigma rule authored from a lab exercise's log evidence
 - [x] SIEM (Wazuh) deployment attempted, deferred due to a host hardware constraint. See [wazuh-siem-attempt.md](analysis/labs/wazuh-siem-attempt.md)
 - [ ] Correlation-based detection of the vsftpd connect-without-login pattern (contingent on revisiting the SIEM attempt above)
