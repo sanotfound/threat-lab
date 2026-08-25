@@ -1,0 +1,45 @@
+title: ARP Cache Poisoning via Conflicting IP-to-MAC Binding
+id: a3c9e1d4-7f2b-4e6a-9c1d-3b8f5a2e9d40
+status: experimental
+description: |
+    Flags the classic signature of ARP cache poisoning: the same IP address
+    being claimed by two different MAC addresses within a short window, or a
+    single MAC address answering for more than one IP address on the same
+    segment. During analysis of a bidirectional MITM against Metasploitable2
+    and an Alpine Linux endpoint on the same /24, this pattern was confirmed
+    both via Wireshark's built-in "Duplicate IP address configured" expert
+    heuristic and manually, by cross-referencing gratuitous ARP replies in a
+    tcpdump capture. This rule targets arpwatch's syslog output, the
+    purpose-built tool for continuous ARP monitoring, rather than a one-off
+    packet capture review, since the underlying pattern is only actionable
+    as a live/ongoing detection, not a retrospective one (the poisoning tool
+    observed in this exercise restores the legitimate binding on exit).
+references:
+    - https://github.com/sanotfound/threat-lab/blob/main/analysis/labs/metasploitable2/05-arp-poisoning-mitm.md
+    - https://attack.mitre.org/techniques/T1557/002/
+author: S_Star
+date: 2026-08-25
+tags:
+    - attack.credential_access
+    - attack.collection
+    - attack.t1557.002
+    - attack.t1040
+logsource:
+    product: linux
+    service: arpwatch
+detection:
+    selection:
+        Message|contains:
+            - 'flip flop'
+            - 'changed ethernet address'
+            - 'new station'
+    condition: selection
+falsepositives:
+    - Legitimate NIC replacement or VM re-provisioning on an existing IP address
+    - DHCP lease changes that reassign an IP to a different physical/virtual host shortly after the previous lease expires
+    - High-availability setups where a virtual IP legitimately moves between two real MAC addresses (VRRP/CARP/keepalived); these environments need an allowlist of expected VIP/MAC pairs before this rule is usable
+level: high
+fields:
+    - Message
+    - Ethernet address
+    - IP address
