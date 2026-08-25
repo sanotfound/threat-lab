@@ -81,10 +81,10 @@ An unencrypted FTP banner grab is trivially visible to any packet capture or FTP
 ---
 
 ## Evidence
-![WiresharkEvidence_1](assets/02-wireshark-filtered-handshake.png)
+![WiresharkEvidence_1](assets/02/02-wireshark-filtered-handshake.png)
 *  filtered packet list showing frames 21-25
 
-![WiresharkEvidence_1](assets/02-wireshark-syn-flag-detail.png) 
+![WiresharkEvidence_1](assets/02/02-wireshark-syn-flag-detail.png) 
 
 *frame 21 expanded, showing the raw TCP Flags byte (`0x002`) decoded bit-by-bit with `Syn: Set`, alongside the terminal output confirming the FTP banner (`220 (vsFTPd 2.3.4)`) ties the packet-level SYN flag to the completed connection at the application level*
 

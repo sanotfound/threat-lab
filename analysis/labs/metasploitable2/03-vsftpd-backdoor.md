@@ -88,51 +88,51 @@ A first Sigma rule was written from this evidence: [vsftpd-backdoor-connect-revi
 
 ## Evidence
 
-![Metasploit search results for vsftpd](assets/03-msf-search-results.png)
+![Metasploit search results for vsftpd](assets/03/03-msf-search-results.png)
 
 *Search results showing both the DoS module (not used) and the backdoor exploit module selected for this exercise.*
 
-![Module selected with auto-configured payload](assets/03-msf-module-selected.png)
+![Module selected with auto-configured payload](assets/03/03-msf-module-selected.png)
 
 *Module loaded via `use`, with the default reverse Meterpreter payload auto-selected.*
 
-![Module options before configuration](assets/03-msf-show-options.png)
+![Module options before configuration](assets/03/03-msf-show-options.png)
 
 *Module options showing RHOSTS and RPORT before the target was set.*
 
-![Payload options before configuration](assets/03-msf-payload-options.png)
+![Payload options before configuration](assets/03/03-msf-payload-options.png)
 
 *Payload options showing LHOST, LPORT, and the FETCH_* delivery settings.*
 
-![Vulnerability check output](assets/03-msf-vulnerability-check.png)
+![Vulnerability check output](assets/03/03-msf-vulnerability-check.png)
 
 *Output of `check`, confirming the target vulnerable without executing the exploit.*
 
-![Root access confirmed via getuid](assets/03-msf-getuid-root.png)
+![Root access confirmed via getuid](assets/03/03-msf-getuid-root.png)
 
 *`getuid`, `getenv`, and `getpid` confirming the session is running as root.*
 
-![Meterpreter post-exploitation command categories](assets/03-msf-post-exploit-capabilities.png)
+![Meterpreter post-exploitation command categories](assets/03/03-msf-post-exploit-capabilities.png)
 
 *Webcam and microphone command categories available to a root Meterpreter session, illustrating the scope of access full compromise grants.*
 
-![Target system information](assets/03-msf-sysinfo.png)
+![Target system information](assets/03/03-msf-sysinfo.png)
 
 *`sysinfo` output confirming the target OS, kernel, and architecture.*
 
-![Contents of /etc/shadow](assets/03-msf-etc-shadow-dump.png)
+![Contents of /etc/shadow](assets/03/03-msf-etc-shadow-dump.png)
 
 *Full dump of `/etc/shadow`, proving unrestricted read access to protected system files.*
 
-![vsftpd log evidence](assets/03-vsftpd-log-evidence.png)
+![vsftpd log evidence](assets/03/03-vsftpd-log-evidence.png)
 
 *`vsftpd.log` entries matching the exploitation timeline, none paired with a login result.*
 
-![Root-owned payload process](assets/03-msf-ps-aux-payload-process.png)
+![Root-owned payload process](assets/03/03-msf-ps-aux-payload-process.png)
 
 *`ps aux` output showing the delivered payload running as a root process with a randomized name.*
 
-![Active network connections on the target](assets/03-metasploitable-netstat-connections.png)
+![Active network connections on the target](assets/03/03-metasploitable-netstat-connections.png)
 
 *`netstat` output showing the established Meterpreter connection on port 4444 and the CLOSE_WAIT connection on port 6200.*
 
