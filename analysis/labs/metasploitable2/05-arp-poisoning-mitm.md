@@ -17,7 +17,9 @@ Position Kali as a transparent man-in-the-middle between Metasploitable2 (192.16
 
 ### Reconnaissance
 
-Unlike prior exercises, reconnaissance here targeted host behavior rather than service banners. An initial `arpspoof` attempt against an IP Metasploitable2 had never communicated with failed to alter its ARP table. Checking the relevant kernel setting confirmed why:
+Unlike prior exercises, reconnaissance here targeted host behavior rather than service banners. The precondition for this entire attack class is a property of ARP itself, not a misconfiguration: ARP is stateless and unauthenticated by design. A host has no mechanism to verify that a reply actually corresponds to a request it sent, or that the replying host is who it claims to be, and by default it will process a "gratuitous" ARP reply (one that was never requested at all) the same as a solicited one. Every hardening measure discussed below sits on top of that base weakness, none of them removes it.
+
+An initial `arpspoof` attempt against an IP Metasploitable2 had never communicated with failed to alter its ARP table, showing that base weakness is not unconditional. Checking the relevant kernel setting confirmed why:
 
 ```
 cat /proc/sys/net/ipv4/conf/eth0/arp_accept
@@ -162,6 +164,8 @@ Two options were ruled out before choosing a method, and the reasoning matters a
 - **An unscoped packet capture across the network** was also rejected. With no SIEM and no visibility beyond these two hosts, and no specific hypothesis yet, capturing broadly would produce noise with no way to know what to look for in it.
 
 Given the report described a recurring, self-resolving symptom rather than a single resolved event, a targeted live capture was judged reasonable: catch the next recurrence directly. Tool availability was checked first, `tcpdump` exists on Metasploitable2, `telnet` and any packet capture tooling do not exist on the minimal alpine-endpoint image. The investigation proceeded from Metasploitable2 only.
+
+Worth being explicit about what this capture point does and does not depend on, since it differs from the visibility issue flagged in Part 1. Metasploitable2 is not a third party sniffing someone else's conversation, it is the FTP server itself, a direct endpoint of the traffic examined below. Any host, on any network (switched or not), sees traffic addressed to or sent from its own interface without needing port mirroring, SPAN/RSPAN, or a switch flooded into hub-like behavior, none of that machinery is a precondition here. That is a different situation from Kali's visibility in Part 1, where the concern was real and had to be checked directly: Kali was not a party to that traffic, and its apparent visibility into it, before the MITM was genuinely active, came only from the lab's VirtualBox internal network behaving like a hub.
 
 A first capture (`tcpdump -i eth0 -w captura.pcap`) used the tool's default snapshot length (96 bytes), truncating most packets well before any application payload. It was restarted with `-s 0` to capture full packets, which the traffic below was pulled from.
 
