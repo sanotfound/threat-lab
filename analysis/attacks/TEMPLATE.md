@@ -51,19 +51,27 @@ Step-by-step breakdown of how the attack is executed.
 
 ---
 
-## Detection
+## Defensive Posture (NIST CSF)
 
-What signals indicate this attack is occurring or has occurred.
+How an organization's security program, not just a single control, addresses this attack across its lifecycle (see [frameworks/nist-csf.md](../../frameworks/nist-csf.md)). Only include the functions that are actually relevant to this attack, do not pad out a function with generic content just to have every row filled.
 
-### Network Indicators
-### Log Indicators
-### Behavioral Indicators
+### Govern
+Policy, risk tolerance, or ownership decisions relevant to this attack (e.g., which team owns network access control, what risk this is accepted or not accepted at).
 
----
+### Identify
+What assets, exposure, or architectural conditions make an organization vulnerable to this attack in the first place.
 
-## Mitigation and Prevention
+### Protect
+Preventive controls: configuration, architecture, or process changes that reduce likelihood or limit blast radius.
 
-Controls and configurations that prevent or limit the attack.
+### Detect
+What signals indicate this attack is occurring or has occurred. Network indicators, log indicators, behavioral indicators. Link or embed a Sigma/YARA rule from `/detection/` if one exists for this attack.
+
+### Respond
+What a defender actually does once this is detected: containment steps, communication, escalation.
+
+### Recover
+What is done to restore a trustworthy state afterward: credential rotation, rebuilding, validation that the exploitation path is actually closed.
 
 ---
 
