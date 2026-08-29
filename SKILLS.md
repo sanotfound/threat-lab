@@ -20,7 +20,7 @@ Skill categories originally sourced from reviewing an external, unaffiliated lea
 | Zeek | gap | |
 | Threat intelligence platforms (MISP, ThreatConnect, Anomali) | gap | |
 | OSINT tooling (Maltego, Shodan, TheHarvester) | gap | |
-| Scripting (Python for automation) | covered | `projects/dns-lookup-cli/`, first end-to-end script, not just recognizing syntax |
+| Scripting (Python for automation) | covered | `projects/dns-lookup-cli/`|
 
 ## Analytical Skills
 
