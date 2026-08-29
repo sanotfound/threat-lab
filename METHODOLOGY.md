@@ -34,6 +34,8 @@ Sources are evaluated for credibility before use. Preferred sources in order of 
 4. **Map** - Align observed behaviors to MITRE ATT&CK tactics and techniques
 5. **Document limitations** - Explicitly state what could not be verified and why
 
+This is a domain-specific instance of the general Intelligence Cycle, see [frameworks/intelligence-cycle.md](frameworks/intelligence-cycle.md) for the underlying model and where this process currently has no equivalent to its Feedback phase.
+
 ---
 
 ## MITRE ATT&CK Mapping

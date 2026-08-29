@@ -63,6 +63,44 @@ Practical exercises conducted in an isolated Kali Linux and Metasploitable2 lab,
 
 ---
 
+## Independent Projects
+
+Standalone tools, separate from the OSINT analyses and the Metasploitable2 lab arc, chosen to close specific gaps tracked in [SKILLS.md](SKILLS.md) or to build first-hand understanding ahead of writing a planned analysis above. Candidates sourced from reviewing [CarterPerez-dev/Cybersecurity-Projects](https://github.com/CarterPerez-dev/Cybersecurity-Projects), filtered down to the ones that build a Threat Intelligence & Hunting relevant skill, offensive/exploit-development-focused projects from that list were deliberately excluded. Ordered by suggested execution sequence, not by the source repository's own tiering.
+
+**Phase 1: quick builds, fit a short morning session**
+
+- [ ] DNS Lookup CLI Tool
+- [ ] SSH Brute Force Detector
+- [ ] Systemd Persistence Scanner
+- [ ] DNS Sinkhole
+
+**Phase 2: same tier, technically heavier, better suited to a longer block**
+
+- [ ] Canary Token Generator
+- [ ] Linux eBPF Security Tracer
+
+**Phase 3: OSINT/CTI collection tooling**
+
+- [ ] Security News Scraper (automates the Collection phase of [frameworks/intelligence-cycle.md](frameworks/intelligence-cycle.md))
+- [ ] Subdomain Takeover Scanner
+
+**Phase 4: heavier analysis and detection**
+
+- [ ] Secrets Scanner
+- [ ] JA3/JA4 TLS Fingerprinting Tool
+- [ ] Binary Analysis Tool (closes the "malware analysis basics" gap in SKILLS.md)
+
+**Phase 5: builds first-hand understanding ahead of a planned Attacks analysis above**
+
+- [ ] Supply Chain Attack Simulator (do before writing the Supply Chain Attack analysis)
+- [ ] SBOM Generator & Vulnerability Matcher
+
+**Phase 6: largest scope, closes the SIEM gap in SKILLS.md**
+
+- [ ] SIEM Dashboard
+
+---
+
 ## Planned Improvements
 
 - [ ] Add sandbox analysis to existing reports (as technical skills develop)
