@@ -40,6 +40,7 @@ threat-lab/
 │   ├── iocs/           # Indicators of Compromise
 │   └── reports/        # Threat intelligence reports and summaries
 ├── frameworks/         # Reference documents for MITRE ATT&CK, Kill Chain, etc.
+├── projects/           # Standalone tools built to close specific skill gaps
 ├── resources/          # References and useful links
 └── .github/            # Issue templates
 ```
@@ -74,6 +75,8 @@ See [analysis/labs/README.md](analysis/labs/README.md) for scope, ground rules, 
 | [Cyber Kill Chain](frameworks/cyber-kill-chain.md) | Attack phase structuring |
 | [Diamond Model](frameworks/diamond-model.md) | Threat actor relationship modeling |
 | [Pyramid of Pain](frameworks/pyramid-of-pain.md) | IOC prioritization |
+| [NIST CSF](frameworks/nist-csf.md) | Organizational defensive posture, `attacks/` and `malware/` analyses |
+| [Intelligence Cycle](frameworks/intelligence-cycle.md) | The analysis process itself (see METHODOLOGY.md) |
 
 ---
 

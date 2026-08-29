@@ -4,6 +4,27 @@ All additions and updates to this repository are recorded here in reverse chrono
 
 ---
 
+## [v0.6] - 2026-08-29
+
+### Added
+- Lab exercise 05: ARP cache poisoning and bidirectional MITM against Metasploitable2 and a new third host, `alpine-endpoint` (192.168.10.40), comparing a naive execution against a properly executed attack, then a defense investigation conducted with no foreknowledge of the attack
+- `detection/sigma/arp-cache-poisoning-duplicate-mac.yml`, the second Sigma rule authored from a lab exercise
+- `frameworks/nist-csf.md` and `frameworks/intelligence-cycle.md`, two new framework references
+- `SKILLS.md`, a capability checklist tracked separately from ROADMAP.md's deliverable list
+- `projects/`, a new top-level section for standalone tools, with its own README and TEMPLATE
+- ROADMAP.md: new **Independent Projects** section, 14 tools sourced from reviewing an external learning resource, filtered and ordered for this repository's specific goals
+
+### Updated
+- `analysis/attacks/TEMPLATE.md` and `analysis/malware/TEMPLATE.md`: `Detection` and `Mitigation` sections replaced with a single `Defensive Posture (NIST CSF)` section
+- `analysis/malware/ransomware/wannacry.md`: retrofit to the NIST CSF structure for consistency with the new template
+- `METHODOLOGY.md`: Analysis Process now links to `frameworks/intelligence-cycle.md` as the general model it is a specific instance of
+- `analysis/labs/metasploitable2/assets/`: reorganized into one subfolder per exercise (`assets/01/` through `assets/05/`), all existing image references updated
+- `analysis/labs/metasploitable2/00-environment.md`: documents the third VM, the `LabCyber` network, its hub-like behavior, and the host's RAM constraint
+- README.md: repository structure diagram and frameworks table both reflect the additions above
+- ROADMAP.md: WannaCry and ARP poisoning/MITM marked complete, Current Focus updated
+
+---
+
 ## [v0.5] - 2026-08-22
 
 ### Added
