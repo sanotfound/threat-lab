@@ -69,7 +69,7 @@ Standalone tools, separate from the OSINT analyses and the Metasploitable2 lab a
 
 **Phase 1: quick builds, fit a short morning session**
 
-- [ ] DNS Lookup CLI Tool
+- [x] DNS Lookup CLI Tool
 - [ ] SSH Brute Force Detector
 - [ ] Systemd Persistence Scanner
 - [ ] DNS Sinkhole

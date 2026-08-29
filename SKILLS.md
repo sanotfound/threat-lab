@@ -15,12 +15,12 @@ Skill categories originally sourced from reviewing an external, unaffiliated lea
 | Network analysis (Wireshark, tcpdump) | covered | Labs 02, 05 |
 | Threat modeling frameworks | covered | `frameworks/` (six frameworks applied across analyses and labs) |
 | Malware analysis basics | partial | `wannacry.md` is OSINT synthesis, not original dynamic/static analysis |
-| Indicator enrichment and validation | partial | Source Analysis sections evaluate *reported* IOCs, not live ones |
+| Indicator enrichment and validation | covered | Source Analysis sections evaluate *reported* IOCs; `projects/dns-lookup-cli/` now adds live re-verification of a domain indicator (DNS + WHOIS state) |
 | SIEM platforms (Splunk, ELK, QRadar) | partial | Wazuh attempted and deferred, see `analysis/labs/wazuh-siem-attempt.md` |
 | Zeek | gap | |
 | Threat intelligence platforms (MISP, ThreatConnect, Anomali) | gap | |
 | OSINT tooling (Maltego, Shodan, TheHarvester) | gap | |
-| Scripting (Python for automation) | gap | Everything so far has been manual, no automation written |
+| Scripting (Python for automation) | covered | `projects/dns-lookup-cli/`, first end-to-end script, not just recognizing syntax |
 
 ## Analytical Skills
 
