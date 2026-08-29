@@ -9,7 +9,7 @@
 
 ## Why This Was Built
 
-Which gap this closes: link the specific row in [SKILLS.md](../../SKILLS.md), or the planned analysis in [ROADMAP.md](../../ROADMAP.md) this was built to prepare for. Not a generic "to learn X", the specific gap or specific future write-up this serves.
+Which gap this closes. Not a generic "to learn X", the specific gap or specific future write-up this serves.
 
 ---
 
@@ -35,7 +35,7 @@ The actual mechanism, technical enough to be useful to someone reading the code.
 
 ## What Was Learned
 
-Specific, not generic. What surprised you, what was harder than expected, what you would do differently. This is the part a recruiter reading the code actually wants, not a restatement of the README above it.
+What was surprising, what was harder than expected, what could been done differently, and other things like that.
 
 ---
 
