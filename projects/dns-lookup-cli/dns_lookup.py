@@ -68,7 +68,7 @@ def get_rdap_info(domain, cache):
         }
         cache[domain]["rdap"] = {"data": rdap_summary, "expiration": time.time() + 86400}
 
-    except requests.exceptions.RequestException as e:
+    except (requests.exceptions.RequestException, KeyError, TypeError, IndexError) as e:
         print(f"Error fetching RDAP data: {e}")
 
 
@@ -100,6 +100,8 @@ if __name__ == "__main__":
         print("Using default DoH nameserver: https://dns.google/dns-query")
         ns = dns.nameserver.DoHNameserver("https://dns.google/dns-query", bootstrap_address="8.8.8.8")
         resolver.nameservers = [ns]
+
+    domain_not_found = False
 
     # Query the main DNS record types for the domain
     record_types = ['A', 'MX', 'NS', 'TXT', 'AAAA', 'CNAME', 'SOA', 'CAA']
@@ -133,12 +135,15 @@ if __name__ == "__main__":
 
         except dns.resolver.NXDOMAIN:
             print(f"Domain {domain} not found")
+            domain_not_found = True
+            break
 
         except Exception as e:
             print(f"Error querying {record_type} records: {e}")
 
-    # Query domain registration data (also updates cache)
-    get_rdap_info(domain, cache)
+    # Query domain registration data (also updates cache), skip if the domain doesn't exist
+    if not domain_not_found:
+        get_rdap_info(domain, cache)
 
     with open("dns_cache.json", "w") as arquivo:
         json.dump(cache, arquivo)

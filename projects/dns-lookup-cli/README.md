@@ -98,6 +98,10 @@ python dns_lookup.py cloudflare.com 1.1.1.1                                  # o
 
 **WHOIS/RDAP lookups and DNS lookups are genuinely different problems**, even though this tool bundles both under one command. DNS record data comes with a self-describing validity window (TTL) built into the protocol response, RDAP does not, so caching it required picking an arbitrary duration rather than reading one from the data. Two different caching strategies coexisting in the same cache file, for a principled reason, not an oversight.
 
+**Catching the right *family* of exceptions matters, not just catching something.** `get_rdap_info`'s exception handling originally only covered `requests.exceptions.RequestException`, network and HTTP-level failures. But the nested field extraction that follows a successful request (searching `entities` for the one with a `"registrar"` role, then its `vcardArray` for the `"fn"` property) can fail for reasons that have nothing to do with the network, a TLD or regional RDAP server returning a thinner response than expected, missing a `vcardArray` entirely, or no entity carrying the `"registrar"` role at all. Those raise `KeyError`, `TypeError`, or `IndexError`, none of which are `RequestException`, so the original `except` clause let them through uncaught. Fixed by catching the specific tuple of exception types that can actually occur at each stage, not just the one from the network call.
+
+**`NXDOMAIN` is a statement about the domain, not about one record type.** The DNS loop originally caught `NXDOMAIN` per record type and kept going, meaning a genuinely nonexistent domain produced the same "not found" message eight times, once per type, before still going on to query RDAP, which would predictably fail too. `NXDOMAIN` means the domain itself doesn't exist, that fact doesn't change across record types, so it only needs establishing once. Fixed with a flag set on the first `NXDOMAIN`, breaking out of the record-type loop immediately, and skipping the RDAP call entirely when it's set.
+
 ---
 
 ## Limitations
