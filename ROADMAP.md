@@ -88,15 +88,16 @@ Standalone tools, separate from the OSINT analyses and the Metasploitable2 lab a
 
 - [ ] Secrets Scanner
 - [ ] JA3/JA4 TLS Fingerprinting Tool
-- [ ] Binary Analysis Tool (closes the "malware analysis basics" gap in SKILLS.md)
+- [ ] Binary Analysis Tool (closes the "malware analysis basics" gap in SKILLS.md; scoped deliberately light: string extraction, file type/packing identification, flagging suspicious API calls via a decompiler's higher-level output, not manual raw-assembly reading)
 
 **Phase 5: builds first-hand understanding ahead of a planned Attacks analysis above**
 
 - [ ] Supply Chain Attack Simulator (do before writing the Supply Chain Attack analysis)
 - [ ] SBOM Generator & Vulnerability Matcher
 
-**Phase 6: largest scope, closes the SIEM gap in SKILLS.md**
+**Phase 6: log analysis and correlation, closes the SIEM gap in SKILLS.md**
 
+- [ ] Pandas-based log analysis warm-up (no dedicated repo tooling, practice project): re-analyze existing lab artifacts (e.g. the ARP poisoning capture from [lab exercise 05](analysis/labs/metasploitable2/05-arp-poisoning-mitm.md), exported to CSV) or a sample auth log, using Pandas to filter, group, and spot patterns programmatically instead of manually. Deliberately scoped smaller than the SIEM Dashboard below, first hands-on contact with Pandas before adding a full-stack app on top of it.
 - [ ] SIEM Dashboard
 
 ---
