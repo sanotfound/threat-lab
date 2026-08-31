@@ -6,6 +6,14 @@ This methodology applies to the OSINT-based analyses in `analysis/malware/`, `an
 
 ---
 
+## Relationship to Hands-On Practice
+
+This methodology and the primary-research methodology used in `analysis/labs/` are not run independently of each other. Hands-on practice (the labs, and the standalone tools in `projects/`) exists to build real operating system and networking competency, process behavior, memory, the filesystem, and how protocols actually communicate on the wire, not to replicate every threat documented here. Many of the most significant threats in `analysis/malware/` and `analysis/attacks/` (a destructive wiper, a nation-state implant) are neither ethical nor sensible to rebuild for study, and this repository does not attempt to. Where a lab exercise happens to cover the same technique an analysis later documents (see [ARP poisoning](analysis/labs/metasploitable2/05-arp-poisoning-mitm.md), for one), that overlap is incidental, not a requirement for the analysis to exist.
+
+This also bounds what hands-on practice in this repository is for: any offensive technique tested in `analysis/labs/` is tested to understand its effect and inform detection or mitigation, never to build new offensive capability. See [analysis/labs/README.md](analysis/labs/README.md) for the ground rules that enforce this.
+
+---
+
 ## Analytical Approach
 
 Every analysis in this repository is built on open-source intelligence (OSINT). No proprietary tools, sandbox environments, or raw malware samples are used at this stage of the project. This is acknowledged as a limitation and documented explicitly in each analysis.

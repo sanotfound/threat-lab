@@ -14,6 +14,8 @@ This document outlines the planned development of Threat Lab. Priorities shift a
 
 ## Planned Analyses
 
+These are not ordered by relation to hands-on practice, see [METHODOLOGY.md](METHODOLOGY.md#relationship-to-hands-on-practice) for how the analyses below and the practice in `analysis/labs/`/`projects/` actually relate.
+
 ### Malware
 
 - [x] WannaCry (Ransomware)

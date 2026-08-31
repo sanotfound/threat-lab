@@ -59,11 +59,15 @@ Key principles:
 
 ---
 
-## Hands-On Labs
+## How Practice and Analysis Relate
 
-Alongside the OSINT-based analyses, [analysis/labs/](analysis/labs/) documents hands-on exercises conducted in a private, isolated virtual lab (Kali Linux and Metasploitable2). These exercises take a purple team approach: each one pairs an offensive technique with an equal or greater focus on the detection and mitigation side, and every tool used is a legitimate, widely-taught IT/security tool applied only against systems I own and control.
+This repository has two kinds of work: OSINT-based analyses (`analysis/malware/`, `attacks/`, `campaigns/`, `actors/`) built from published, secondary sources, and hands-on practice (`analysis/labs/`, `projects/`) done firsthand against systems I own and control, in a private, isolated virtual lab (Kali Linux and Metasploitable2) or as standalone tools.
 
-See [analysis/labs/README.md](analysis/labs/README.md) for scope, ground rules, and the exercise format.
+Practice is not scoped to match each analysis one-to-one. Its purpose is building real technical grounding, how an operating system actually behaves under the hood (processes, memory, the filesystem) and how network and protocol communication actually happens. Some of the most significant threats documented here (a destructive wiper like NotPetya, for instance) are neither ethical nor sensible to rebuild just to study firsthand, and there is no intention of ever doing so. Where a lab exercise or project happens to study the same technique an analysis later covers (see [ARP poisoning](analysis/labs/metasploitable2/05-arp-poisoning-mitm.md), for one), that overlap is a bonus, not a requirement for the analysis to exist.
+
+Any offensive technique practiced hands-on here, in the labs specifically, is practiced for exactly one reason: understanding what it affects and how, well enough to reason about detection and mitigation. Each lab exercise takes a purple team approach for this reason, pairing the offensive technique with an equal or greater focus on the defensive side. Building new offensive capability (malware, exploits, tooling meant to attack rather than to understand) is out of scope here, regardless of how technically interesting it might be, and every tool used is a legitimate, widely-taught IT/security tool applied only against systems I own and control.
+
+See [analysis/labs/README.md](analysis/labs/README.md) for the scope, ground rules, and format of the hands-on exercises, and [METHODOLOGY.md](METHODOLOGY.md) for how the OSINT-based analyses are conducted.
 
 ---
 
