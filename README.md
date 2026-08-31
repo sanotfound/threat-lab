@@ -10,7 +10,7 @@
 
 ## What This Is
 
-Threat Lab is a personal threat intelligence repository built to document, analyze, and map cyber threats using open-source intelligence (OSINT). Each analysis goes beyond surface-level description, focusing on operational models, attack chains, source conflicts, and what remains unverified.
+Threat Lab is a personal threat intelligence repository, combining two kinds of work: OSINT-based analyses that document, analyze, and map cyber threats using published sources, and hands-on practice, lab exercises and standalone tools built firsthand against systems I own and control. Each analysis goes beyond surface-level description, focusing on operational models, attack chains, source conflicts, and what remains unverified.
 
 This is a long-term project. It evolves as my technical knowledge deepens.
 
@@ -20,6 +20,8 @@ This is a long-term project. It evolves as my technical knowledge deepens.
 
 **This is not** a list of threats. **It is not a copy** of MITRE ATT&CK.  
 Every analysis here involves source cross-referencing, explicit mapping to industry frameworks, and documented limitations.
+
+**It is also not** a red-team or offensive-tooling portfolio. The hands-on practice here is scoped and purpose-bound, see [How Practice and Analysis Relate](#how-practice-and-analysis-relate).
 
 ---
 
