@@ -143,7 +143,7 @@ A single interactive SSH session as `msfadmin`, opened to confirm the credential
 
 One valid credential recovered, giving interactive SSH access to a `sudo`-capable account.
 
-Beyond that single result, the run was shaped to produce representative telemetry for Part 2. It targeted six usernames including three that never existed, and during the same window `alpine-endpoint` (192.168.10.40) ran a series of genuine `msfadmin` logins: some correct on the first try, some where the password was mistyped once or twice before succeeding, and one where it was entered wrong three times in a row and the connection was dropped. The resulting authentication log, [projects/ssh-bruteforce-detector/sample-data/auth.log](../../../projects/ssh-bruteforce-detector/sample-data/auth.log), therefore contains the attack interleaved in real time with ordinary user behaviour.
+Beyond that single result, the run was shaped to produce representative telemetry for Part 2. It targeted six usernames including three that never existed, and during the same window `alpine-endpoint` (192.168.10.40) ran a series of genuine `msfadmin` logins: some correct on the first try, some where the password was mistyped once or twice before succeeding, and one where it was entered wrong three times in a row and the connection was dropped. The resulting authentication log, [projects/ssh-bruteforce-detector/sample-data/auth.txt](../../../projects/ssh-bruteforce-detector/sample-data/auth.txt), therefore contains the attack interleaved in real time with ordinary user behaviour.
 
 ### MITRE ATT&CK Mapping
 
@@ -217,9 +217,7 @@ Sep  1 13:22:31 ... Failed password for invalid user test from 192.168.10.10 por
 Sep  1 13:21:41 ... Accepted password for msfadmin from 192.168.10.10 port 45810 ssh2
 ```
 
-Timestamped in the middle of the failure burst. The attack did not just try, it got in, as `msfadmin`.
-
-A second `Accepted password` from 192.168.10.10 appears later, at `13:29:00`, well after the burst ended. This one is the analyst's own verification login while investigating, not the incident. Separating responder activity from adversary activity is routine, and the timeline (isolated success, no surrounding failures, after the burst) makes the distinction clear.
+Timestamped in the middle of the failure burst, from the same address driving it. The attack did not just try, it got in, as `msfadmin`.
 
 **The other source.** 192.168.10.40 produced only 8 failures. Its full picture:
 
@@ -332,7 +330,8 @@ This is why Containment leads with disabling password authentication, at the top
 
 - The `msfadmin` account is `sudo`-capable. Privilege escalation to root from the recovered session was not carried out here but is a single command and would be the expected next step in a real intrusion.
 - The dataset deliberately contains a legitimate user's failed and successful logins interleaved with the attack, so the [ssh-bruteforce-detector](../../../projects/ssh-bruteforce-detector/) project faces a real discrimination problem instead of a clean burst. Building that detector is the direct follow-up to this exercise.
-- The initial pass described in Exploitation is not present in the committed log. Metasploitable2 was reverted to a clean snapshot between the two passes, which removed those entries. Its screenshots (the Hydra result, the packet capture, the auth.log close-up) are kept because the per-attempt and network patterns they show are identical in kind to the full run, only smaller. The committed log holds the full run plus the legitimate `alpine-endpoint` sessions.
+- The initial pass described in Exploitation is not present in the committed log. Metasploitable2 was reverted to a clean snapshot between the two passes, which removed those entries. Its screenshots (the Hydra result, the packet capture, the auth.log close-up) are kept because the per-attempt and network patterns they show are identical in kind to the full run, only smaller.
+- The committed dataset, `sample-data/auth.txt`, is trimmed to the `13:18:24` to `13:22:35` window: the full attack run plus the legitimate `alpine-endpoint` sessions, and nothing else. Removed from the raw capture were unrelated boot messages from earlier dates and a post-incident verification login from the Kali address at `13:29`, which was the analyst's own activity. Keeping the responder's login out avoids a second `Accepted password` from the attacking address that a reader of the detector's output would have to explain.
 - Low-and-slow brute force, a few attempts per hour spread across many source addresses, is not represented in this dataset and is the harder detection case. Candidate for a follow-up exercise once the threshold detector exists and its blind spot can be shown concretely.
 - The legacy algorithm negotiation work in Weaponization is worth keeping in full. It is a current, recurring obstacle when administering or assessing older systems, not a quirk of this one host, and the same target needed different flags for the OpenSSH 4.7 era client fixes versus the OpenSSH 10.3 client.
 - Next Metasploitable2 service per [ROADMAP.md](../../../ROADMAP.md): the UnrealIRCd backdoor on port 6667.

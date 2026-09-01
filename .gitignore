@@ -1,0 +1,15 @@
+# Windows / OneDrive folder metadata
+desktop.ini
+Thumbs.db
+ehthumbs.db
+
+# macOS
+.DS_Store
+
+# Windows "mark of the web" alternate data streams
+*:Zone.Identifier
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
