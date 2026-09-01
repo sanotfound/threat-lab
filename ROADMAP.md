@@ -7,7 +7,7 @@ This document outlines the planned development of Threat Lab. Priorities shift a
 ## Current Focus
 
 - Base structure and documentation standards established
-- First complete malware analysis (WannaCry) and first complete hands-on lab arc (Metasploitable2, exercises 01-05) done
+- First complete malware analysis (WannaCry) and first complete hands-on lab arc (Metasploitable2, exercises 01-06) done
 - Building YARA rule templates aligned with analyses
 
 ---
@@ -56,7 +56,8 @@ Practical exercises conducted in an isolated Kali Linux and Metasploitable2 lab,
 - [x] vsftpd 2.3.4 backdoor exploitation (CVE-2011-2523)
 - [x] Samba `usermap_script` RCE (CVE-2007-2447)
 - [ ] distccd unauthenticated RCE (CVE-2004-2687)
-- [ ] Weak/default credential attacks (MySQL, brute force with Hydra)
+- [x] SSH password brute force with Hydra against a weak credential (exercise 06), log evidence feeds the SSH Brute Force Detector project below
+- [ ] MySQL weak/default credential access
 - [ ] UnrealIRCd backdoor
 - [x] ARP poisoning / MITM within the isolated network
 - [x] Sigma rule authored from a lab exercise's log evidence

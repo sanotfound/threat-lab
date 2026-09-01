@@ -13,6 +13,12 @@ This section documents hands-on exercises conducted in a private, isolated lab e
 
 ---
 
+## Why the Target Systems Are Old
+
+Metasploitable2 ships vulnerabilities from 2007-2011. That age is not a limitation on relevance: the specific CVE is old, the mechanism behind it is not. Command injection, weak credential policy, cryptographic downgrade, ARP cache poisoning, none of these have expiration dates, they keep showing up in current systems under different names. Legacy systems nobody can afford to take fully offline (industrial control, healthcare, government) are a permanent, current fixture of real environments, not a historical footnote, and recognizing and handling that is itself a live skill, not a nostalgia exercise. Practicing against an old target also forces engagement with fundamentals a newer, more abstracted system might paper over, the same reason hands-on practice exists at all (see [METHODOLOGY.md](../../METHODOLOGY.md#relationship-to-hands-on-practice)).
+
+---
+
 ## On Dual-Use Tools
 
 Nearly every tool used in this section (Nmap, Metasploit, Wireshark, etc.) is a legitimate, widely-taught IT/security tool with everyday defensive uses: asset inventory, firewall auditing, compliance scanning, troubleshooting, authorized penetration testing. None of them are illegal or restricted to use.
