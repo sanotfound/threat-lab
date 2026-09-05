@@ -73,7 +73,7 @@ Standalone tools, separate from the OSINT analyses and the Metasploitable2 lab a
 **Phase 1: quick builds, fit a short morning session**
 
 - [x] DNS Lookup CLI Tool
-- [ ] SSH Brute Force Detector
+- [ ] Auth Log Analyzer (`projects/authlog-analyzer/`), started as "SSH Brute Force Detector" and broadened: a triage tool for a Linux auth log covering six event categories (SSH auth and brute force, `sudo`/`su`, account and group changes, sessions, service events, log continuity), so it is useful outside the lab and gives enough scope to tell an attack from a mistake from a fault. v1 (failed-password tally plus threshold) and v2 (full category 1, split into modules: invalid-username tracking, accepted-login correlation, known-asset check, distinct-connection sliding window, additive severity scoring) done. v3 covers categories 2-6, pending a richer sample log with real `sudo`/account-change activity. Outgrew this phase's "short morning session" sizing.
 - [ ] Systemd Persistence Scanner
 - [ ] DNS Sinkhole
 

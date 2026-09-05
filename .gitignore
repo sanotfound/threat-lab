@@ -13,3 +13,8 @@ ehthumbs.db
 .vscode/
 .idea/
 *.swp
+tempCodeRunnerFile.py
+
+# Python
+__pycache__/
+*.pyc
